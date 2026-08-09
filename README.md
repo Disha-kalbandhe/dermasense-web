@@ -187,4 +187,4 @@ If you are adding new functionality:
 
 ## Status
 
-This monorepo is organized for collaborative development across product UI, model serving, and machine learning research. The clean folder split is designed to keep the project maintainable as the frontend, backend, and ML pipeline evolve independently.
+This monorepo is organized for collaborative development across product UI, model serving, and machine learning research. The clean folder split is designed to keep the project maintainable as the frontend, backend, and ML pipeline evolve independently."# Taken over by Disha - $(date)" 
