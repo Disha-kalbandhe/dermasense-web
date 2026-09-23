@@ -1,0 +1,11 @@
+{
+  "top_1_accuracy": 0.21669980119284293,
+  "top_3_accuracy": 0.35984095427435386,
+  "top_5_accuracy": 0.4304174950298211,
+  "macro_precision": 0.0674110671896842,
+  "macro_recall": 0.15136351126917166,
+  "macro_f1": 0.06967951757237162,
+  "weighted_f1": 0.18411042798738975,
+  "balanced_accuracy": 0.15136351126917166,
+  "expected_calibration_error_10_bins": 0.05792440730841389
+}

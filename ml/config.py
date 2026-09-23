@@ -1,22 +1,28 @@
+import json
 import os
+from pathlib import Path
+
+import torch
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-BASE_DIR        = os.path.dirname(os.path.abspath(__file__))
-DATA_RAW        = os.path.join(BASE_DIR, "data", "raw")
-DATA_PROCESSED  = os.path.join(BASE_DIR, "data", "processed")
-DATASET_DIR_0 = os.path.join(DATA_RAW, "DATASET", "DATASET_0", "DATASET_0")
-DATASET_DIR_1 = os.path.join(DATA_RAW, "DATASET", "DATASET_1", "DATASET_1")
-DATASET_DIR   = DATASET_DIR_0
-CHECKPOINTS_DIR = os.path.join(BASE_DIR, "checkpoints")
-OUTPUTS_DIR     = os.path.join(BASE_DIR, "outputs")
-LOGS_DIR        = os.path.join(OUTPUTS_DIR, "logs")
-PLOTS_DIR       = os.path.join(OUTPUTS_DIR, "plots")
-HEATMAPS_DIR    = os.path.join(OUTPUTS_DIR, "sample_heatmaps")
+PROJECT_ROOT = Path(__file__).resolve().parent
+DATA_RAW = PROJECT_ROOT / "data" / "raw"
+DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
+DATASET_DIR_0 = DATA_RAW / "DATASET" / "DATASET_0" / "DATASET_0"
+DATASET_DIR_1 = DATA_RAW / "DATASET" / "DATASET_1" / "DATASET_1"
+DATASET_DIR = DATA_RAW / "DATASET"
+CHECKPOINTS_DIR = PROJECT_ROOT / "checkpoints"
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+LOGS_DIR = OUTPUTS_DIR / "logs"
+PLOTS_DIR = OUTPUTS_DIR / "plots"
+HEATMAPS_DIR = OUTPUTS_DIR / "gradcam_samples"
+REPORTS_DIR = OUTPUTS_DIR / "reports"
+HIERARCHY_MAP_PATH = DATA_PROCESSED / "hierarchy_map.json"
 
 # ── CSV Paths ──────────────────────────────────────────────────────────────────
-TRAIN_CSV    = os.path.join(DATA_RAW, "train_split.csv")
-TEST_CSV     = os.path.join(DATA_RAW, "test_split.csv")
-METADATA_CSV = os.path.join(DATA_RAW, "Skin_Metadata.csv")
+TRAIN_CSV = DATA_RAW / "train_split.csv"
+TEST_CSV = DATA_RAW / "test_split.csv"
+METADATA_CSV = DATA_RAW / "Skin_Metadata.csv"
 
 # ── Column Names (confirmed from EDA) ─────────────────────────────────────────
 LABEL_COL      = "Disease_label"
@@ -33,15 +39,23 @@ N_TABULAR_FEATS   = 96   # 49 body + 47 descriptor
 
 # ── Model ──────────────────────────────────────────────────────────────────────
 BACKBONE     = "efficientnet_b3"
-IMG_SIZE     = 300          # EfficientNet-B3 native resolution
+IMG_SIZE     = 224
 IN_CHANNELS  = 3
 TABULAR_DIM  = 96           # input to tabular MLP branch
 FUSION_DIM   = 256          # concat fusion hidden size
 DROPOUT      = 0.3
+D_MODEL      = 256
+N_ATTN_LAYERS = 2
+N_HEADS      = 8
+LOSS_WEIGHTS = {"mainclass": 0.2, "subclass": 0.3, "disease": 1.0}
+FOCAL_GAMMA  = 2.0
+CB_BETA      = 0.999
+NUM_MAIN_CLASSES = 8
+NUM_SUBCLASS_CLASSES = 19
 
 # ── Training ───────────────────────────────────────────────────────────────────
-BATCH_SIZE    = 24          # 300x300 images + tabular on 6GB VRAM → safe
-NUM_EPOCHS    = 40
+BATCH_SIZE    = 16
+NUM_EPOCHS    = 8
 LR            = 3e-4
 WEIGHT_DECAY  = 1e-4
 SCHEDULER     = "cosine"
@@ -51,20 +65,26 @@ SEED          = 42
 # Loss function
 LABEL_SMOOTHING = 0.1   # already set implicitly — add explicitly
 USE_CLASS_WEIGHTS = True
+GRADIENT_ACCUMULATION_STEPS = 2
+PATIENCE = 7
+MIN_DELTA = 0.001
 
 # ── Augmentation ───────────────────────────────────────────────────────────────
 TRAIN_AUG = True
 VAL_AUG   = False
 
 # ── Hardware ───────────────────────────────────────────────────────────────────
-DEVICE      = "cuda"
-NUM_WORKERS = 2             # keep ≤2 on Windows
-PIN_MEMORY  = True
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+NUM_WORKERS = 0
+PIN_MEMORY = torch.cuda.is_available()
+PROFILE = "gpu" if torch.cuda.is_available() else "cpu_fast"
+CPU_THREADS = min(os.cpu_count() or 1, 16)
+NUM_CLASSES = len(json.loads((DATA_PROCESSED / "label2idx.json").read_text(encoding="utf-8")))
 
 # ── Validation Split ───────────────────────────────────────────────────────────
 VAL_SPLIT = 0.15
 
 # ── Checkpoints ───────────────────────────────────────────────────────────────
 SAVE_BEST_ONLY = True
-BEST_MODEL  = os.path.join(CHECKPOINTS_DIR, "best_model.pth")
-LAST_MODEL  = os.path.join(CHECKPOINTS_DIR, "last_model.pth")
+BEST_MODEL = CHECKPOINTS_DIR / "best_model.pth"
+LAST_MODEL = CHECKPOINTS_DIR / "last_model.pth"

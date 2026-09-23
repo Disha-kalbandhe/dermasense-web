@@ -6,12 +6,11 @@ import torch
 from torch.utils.data import Dataset
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
+from utils import metadata_columns
 
 
 def get_tabular_cols(df_columns):
-    body = sorted([c for c in df_columns if c.startswith("Body_part_")])
-    desc = sorted([c for c in df_columns if c.startswith("Descriptor_")])
-    return body + desc
+    return metadata_columns(df_columns)
 
 
 def find_image(img_dir, filename, extra_dirs=None):
@@ -29,34 +28,18 @@ def find_image(img_dir, filename, extra_dirs=None):
 def get_transforms(img_size: int, train: bool):
     if train:
         return A.Compose([
-            A.RandomResizedCrop(size=(img_size, img_size), scale=(0.7, 1.0)),
+            A.Resize(height=img_size, width=img_size),
             A.HorizontalFlip(p=0.5),
-            A.VerticalFlip(p=0.3),
-            A.Rotate(limit=30, p=0.5),
-            A.OneOf([
-                A.ElasticTransform(p=1.0),
-                A.GridDistortion(p=1.0),
-                A.OpticalDistortion(p=1.0),
-            ], p=0.3),
-            A.OneOf([
-                A.ColorJitter(brightness=0.3, contrast=0.3,
-                              saturation=0.2, hue=0.1, p=1.0),
-                A.HueSaturationValue(
-                    hue_shift_limit=15,
-                    sat_shift_limit=25,
-                    val_shift_limit=25, p=1.0),
-            ], p=0.5),
-            A.OneOf([
-                A.GaussNoise(p=1.0),
-                A.GaussianBlur(blur_limit=(3, 5), p=1.0),
-                A.Sharpen(p=1.0),
-            ], p=0.3),
+            A.RandomBrightnessContrast(brightness_limit=0.15, contrast_limit=0.15, p=0.5),
+            A.ShiftScaleRotate(shift_limit=0.05, scale_limit=0.1, rotate_limit=15, p=0.5),
+            A.HueSaturationValue(hue_shift_limit=10, sat_shift_limit=15, val_shift_limit=10, p=0.3),
             A.CoarseDropout(
                 num_holes_range=(1, 4),
-                hole_height_range=(20, 60),
-                hole_width_range=(20, 60),
+                hole_height_range=(10, 30),
+                hole_width_range=(10, 30),
                 p=0.2
             ),
+            A.GaussianBlur(blur_limit=(3, 3), p=0.1),
             A.Normalize(mean=(0.485, 0.456, 0.406),
                         std=(0.229, 0.224, 0.225)),
             ToTensorV2(),
@@ -72,7 +55,8 @@ def get_transforms(img_size: int, train: bool):
 
 class DermaSenseDataset(Dataset):
     def __init__(self, df, img_dir, label2idx, img_col,
-                 label_col, img_size=300, train=True, extra_dirs=None):
+                 label_col, img_size=300, train=True, extra_dirs=None,
+                 hierarchy_map=None):
         self.df         = df.reset_index(drop=True)
         self.img_dir    = img_dir
         self.extra_dirs = extra_dirs or []
@@ -81,6 +65,7 @@ class DermaSenseDataset(Dataset):
         self.label_col  = label_col
         self.transforms = get_transforms(img_size, train)
         self.tab_cols   = get_tabular_cols(df.columns)
+        self.hierarchy_map = hierarchy_map or {}
 
         if "Fitzpatrick" in self.df.columns:
             self.df["Fitzpatrick"] = (
@@ -115,8 +100,15 @@ class DermaSenseDataset(Dataset):
             row[self.tab_cols].values.astype(np.float32),
             dtype=torch.float32
         )
+        disease = row[self.label_col]
         label   = torch.tensor(
-            self.label2idx[row[self.label_col]],
+            self.label2idx[disease],
             dtype=torch.long
         )
-        return image, tabular, label
+        mapping = self.hierarchy_map.get(disease, {})
+        targets = {
+            "disease": label,
+            "mainclass": torch.tensor(mapping.get("mainclass_idx", -1), dtype=torch.long),
+            "subclass": torch.tensor(mapping.get("subclass_idx", -1), dtype=torch.long),
+        }
+        return image, tabular, targets

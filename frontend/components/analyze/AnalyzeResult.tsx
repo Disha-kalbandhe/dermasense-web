@@ -1,20 +1,19 @@
 "use client";
 import { motion } from "motion/react";
-import { useState } from "react";
 import type { FormData } from "@/components/analyze/types";
 import type { PredictResult } from "@/lib/api";
 
 function getConfidenceLabel(confidence: number) {
-  if (confidence >= 70) return "HIGH";
-  if (confidence >= 40) return "MODERATE";
+  if (confidence >= 0.7) return "HIGH";
+  if (confidence >= 0.4) return "MODERATE";
   return "LOW";
 }
 
 function getConfidenceBadgeStyle(confidence: number) {
-  if (confidence >= 70) {
+  if (confidence >= 0.7) {
     return { backgroundColor: "#dcfce7", color: "#166534" };
   }
-  if (confidence >= 40) {
+  if (confidence >= 0.4) {
     return { backgroundColor: "#fef3c7", color: "#92400e" };
   }
   return { backgroundColor: "#fee2e2", color: "#991b1b" };
@@ -29,7 +28,6 @@ export default function AnalyzeResult({
   result: PredictResult;
   onReset: () => void;
 }) {
-  const [activeTab, setActiveTab] = useState<"heatmap" | "original">("heatmap");
   const differentials = result.differentials;
 
   return (
@@ -80,67 +78,34 @@ export default function AnalyzeResult({
             >
               Grad-CAM++ Visualization
             </p>
-            <div
-              className="flex rounded-full overflow-hidden text-xs"
-              style={{ border: "1px solid var(--color-border)" }}
+            <span
+              className="text-xs"
+              style={{ color: "var(--color-text-faint)" }}
             >
-              {(["heatmap", "original"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className="px-3 py-1.5 capitalize transition-colors"
-                  style={{
-                    backgroundColor:
-                      activeTab === tab
-                        ? "var(--color-primary)"
-                        : "transparent",
-                    color:
-                      activeTab === tab
-                        ? "#ffffff"
-                        : "var(--color-text-muted)",
-                  }}
-                >
-                  {tab === "heatmap" ? "Heatmap" : "Original"}
-                </button>
-              ))}
-            </div>
+              {result.explainability.available
+                ? "Model-derived"
+                : "Unavailable"}
+            </span>
           </div>
 
           {/* Image area */}
           <div
             className="w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center relative"
-            style={{
-              backgroundColor:
-                activeTab === "heatmap" ? "#0d0d1a" : "var(--color-surface-offset)",
-            }}
+            style={{ backgroundColor: "var(--color-surface-offset)" }}
           >
-            {activeTab === "heatmap" ? (
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 60% 50% at 45% 55%, #ff4500 0%, #ff8c00 30%, #ffd700 55%, #00ced1 80%, #0d0d1a 100%)",
-                  opacity: 0.9,
-                }}
+            {result.explainability.available &&
+            result.explainability.heatmap_base64 ? (
+              <img
+                src={result.explainability.heatmap_base64}
+                alt="Grad-CAM++ model explanation"
+                className="w-full h-full object-cover"
               />
             ) : (
-              <div
-                className="w-40 h-40 rounded-full"
-                style={{
-                  backgroundColor: "var(--color-surface-dynamic, #e0ddd7)",
-                  border: "1px solid var(--color-border)",
-                }}
-              />
-            )}
-            {activeTab === "heatmap" && (
               <p
-                className="absolute bottom-3 left-3 text-xs"
-                style={{
-                  color: "rgba(255,255,255,0.45)",
-                  fontFamily: "var(--font-mono, monospace)",
-                }}
+                className="text-sm"
+                style={{ color: "var(--color-text-muted)" }}
               >
-                GRAD-CAM++ · EFFICIENTNETB3
+                Explanation unavailable for this result.
               </p>
             )}
           </div>
@@ -158,8 +123,17 @@ export default function AnalyzeResult({
               { label: "Skin Tone", value: `Type ${formData.skinTone}` },
               { label: "Location", value: formData.bodyLocation },
               { label: "Gender", value: formData.gender },
-              { label: "Duration", value: formData.duration.split(" ").slice(0, 2).join(" ") },
-              { label: "Symptoms", value: formData.symptoms.length > 0 ? formData.symptoms.slice(0, 2).join(", ") : "None" },
+              {
+                label: "Duration",
+                value: formData.duration.split(" ").slice(0, 2).join(" "),
+              },
+              {
+                label: "Symptoms",
+                value:
+                  formData.symptoms.length > 0
+                    ? formData.symptoms.slice(0, 2).join(", ")
+                    : "None",
+              },
             ].map((item) => (
               <div key={item.label}>
                 <p
@@ -168,7 +142,10 @@ export default function AnalyzeResult({
                 >
                   {item.label}
                 </p>
-                <p className="text-sm font-medium" style={{ color: "var(--color-text)" }}>
+                <p
+                  className="text-sm font-medium"
+                  style={{ color: "var(--color-text)" }}
+                >
                   {item.value}
                 </p>
               </div>
@@ -212,7 +189,10 @@ export default function AnalyzeResult({
             </h2>
             {/* Confidence bar */}
             <div className="flex justify-between items-center mb-1.5">
-              <p className="text-xs" style={{ color: "var(--color-text-faint)" }}>
+              <p
+                className="text-xs"
+                style={{ color: "var(--color-text-faint)" }}
+              >
                 Confidence
               </p>
               <span
@@ -222,7 +202,7 @@ export default function AnalyzeResult({
                   color: "var(--color-primary)",
                 }}
               >
-                {result.primary_confidence}%
+                {(result.primary_confidence * 100).toFixed(1)}%
               </span>
             </div>
             <div
@@ -233,8 +213,14 @@ export default function AnalyzeResult({
                 className="h-full rounded-full"
                 style={{ backgroundColor: "var(--color-primary)" }}
                 initial={{ width: 0 }}
-                animate={{ width: `${result.primary_confidence}%` }}
-                transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                animate={{
+                  width: `${Math.min(result.primary_confidence * 100, 100)}%`,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.3,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
               />
             </div>
           </div>
@@ -260,7 +246,10 @@ export default function AnalyzeResult({
                     <span
                       className="text-sm"
                       style={{
-                        color: i === 0 ? "var(--color-text)" : "var(--color-text-muted)",
+                        color:
+                          i === 0
+                            ? "var(--color-text)"
+                            : "var(--color-text-muted)",
                         fontWeight: i === 0 ? 500 : 400,
                       }}
                     >
@@ -273,7 +262,7 @@ export default function AnalyzeResult({
                         color: "var(--color-text-muted)",
                       }}
                     >
-                      {d.confidence}%
+                      {(d.confidence * 100).toFixed(1)}%
                     </span>
                   </div>
                   <div
@@ -284,10 +273,14 @@ export default function AnalyzeResult({
                       className="h-full rounded-full"
                       style={{
                         backgroundColor:
-                          i === 0 ? "var(--color-primary)" : "var(--color-text-faint)",
+                          i === 0
+                            ? "var(--color-primary)"
+                            : "var(--color-text-faint)",
                       }}
                       initial={{ width: 0 }}
-                      animate={{ width: `${d.confidence}%` }}
+                      animate={{
+                        width: `${Math.min(d.confidence * 100, 100)}%`,
+                      }}
                       transition={{
                         duration: 0.8,
                         delay: 0.4 + i * 0.1,
@@ -300,32 +293,35 @@ export default function AnalyzeResult({
             </div>
           </div>
 
-          {/* Referral urgency */}
+          {/* Hierarchy */}
           <div
-            className="p-5 rounded-2xl flex items-center gap-3"
+            className="p-5 rounded-2xl"
             style={{
               backgroundColor: "var(--color-surface)",
               border: "1px solid var(--color-border)",
             }}
           >
-            <div
-              className="w-3 h-3 rounded-full shrink-0"
-              style={{ backgroundColor: "#22c55e" }}
-            />
-            <div>
-              <p className="text-sm font-medium" style={{ color: "var(--color-text)" }}>
-                Routine follow-up
-              </p>
-              <p className="text-xs" style={{ color: "var(--color-text-muted)" }}>
-                No urgent referral needed · Monitor for changes
-              </p>
-            </div>
-            <span
-              className="ml-auto text-xs font-medium px-2.5 py-1 rounded-full shrink-0"
-              style={{ backgroundColor: "#dcfce7", color: "#166534" }}
+            <p
+              className="text-xs uppercase tracking-widest mb-3"
+              style={{ color: "var(--color-text-faint)" }}
             >
-              LOW URGENCY
-            </span>
+              Predicted hierarchy
+            </p>
+            <p className="text-sm" style={{ color: "var(--color-text)" }}>
+              {result.hierarchy_path.join(" / ")}
+            </p>
+            <p
+              className="text-xs mt-2"
+              style={{ color: "var(--color-text-muted)" }}
+            >
+              Mainclass{" "}
+              {(result.hierarchy_confidence.mainclass * 100).toFixed(1)}% ·
+              Subclass {(result.hierarchy_confidence.subclass * 100).toFixed(1)}
+              % ·{" "}
+              {result.hierarchical_consistency
+                ? "Hierarchy consistent"
+                : "Hierarchy heads disagree"}
+            </p>
           </div>
 
           {/* Disclaimer */}

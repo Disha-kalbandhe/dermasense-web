@@ -1,0 +1,246 @@
+label,train_count,test_count
+Acanthosis nigricans,3,4
+Acne,148,33
+Acne Conglobata,54,22
+Acne Keloidalis,1,2
+Acne Scars,17,3
+Acrochordon,18,3
+Actinic Dermatitis,8,8
+Allergic Contact Dermatitis,17,15
+Alopecia Areata,71,12
+Androgenic Alopecia,17,9
+Anetoderma,2,0
+Angioedema,1,1
+Atopic Dermatitis,19,11
+Balanitis,1,0
+Basal Cell Carcinoma,6,4
+Becker nevus,1,0
+Bowen's Metastasis,1,0
+Bullous Fixed Drug Eruption,0,1
+Bullous Pemphigoid,2,1
+Burn of skin,11,3
+Candidal Balanoposthitis,31,11
+Candidal Intertrigo,84,28
+Candidal Vulvovaginitis,17,7
+Cellulitis,1,0
+Cheilitis,18,2
+Cherry Angioma,4,3
+Chickenpox exanthem,10,3
+Chromoblastomycosis,8,0
+Chronic Bullous Disease of Childhood,8,0
+Chronic actinic dermatitis,11,4
+Chronic eczema with secondary infection,1,0
+Chronic plaque psoriasis,31,2
+Congenital Disease,2,0
+Contact Dermatitis,108,33
+Contact Dermatitis with secondary infection,2,0
+Contact purpura,1,1
+Corn,2,0
+Crusted eczematous dermatitis,2,0
+Cutaneous Anthrax,1,0
+Cutaneous amyloidosis,2,4
+Cutaneous larva migrans,1,0
+Cutaneous sarcoidosis,3,0
+Cyst,0,1
+Darier's disease,5,0
+Demodicosis,0,3
+Dermatofibroma,0,1
+Dermatosis Papulosa Nigra,17,0
+Diabetic Ulcer,9,0
+Diaper Dermatitis,5,1
+Discoid Lupus Erythematosus,12,0
+Disseminated Eczema,3,6
+Drug Rash,3,0
+Drug eruption,5,0
+Dry Discoid Eczema,3,0
+Dryness (xerosis),7,0
+Ear Eczema,8,4
+Ecchymosis,1,1
+Ecthyma,2,2
+Eczema,130,26
+Eczemated Tinea,1,0
+Epidermal nevus,9,1
+Epidermodysplasia Verruciformis,2,0
+Epidermolysis Bullosa,7,0
+Epidermolysis Bullosa Simplex,6,6
+Erythema Annulare Centrifugum,2,1
+Erythema multiforme,2,0
+Erythrasma,1,0
+Facial hypermelanosis,3,0
+Fissure Foot,7,2
+Fixed Drug Eruption,10,4
+Folliculitis,21,2
+Folliculitis Decalvans,4,3
+Foot ulcer,2,0
+Furuncle,27,5
+GeographicTongue,2,0
+Granuloma annulare,2,0
+Granuloma pyogenic,3,1
+Guttate Psoriasis,20,2
+Gutted Lichen Planus,1,0
+Haemorrhoids,1,0
+Hansen's disease,9,2
+Hemangioma,6,6
+Herpes Labialis,1,2
+Herpes Zoster,25,8
+Herpes genitalis,3,1
+Hidradenitis,13,1
+Hyper Hydrosis,0,1
+Hyperpigmentation disorder,1,0
+Hypertrophic Lichen Planus,8,2
+Hypertrophic Scar / Keloid,12,0
+Idiopathic Guttate Hypomelanosis,5,4
+Impetigo,20,4
+Infected Eczema,62,11
+Infected Keratoderma,6,0
+Infected Nodule,1,0
+Infected Tinea,4,1
+Infection of toe web,1,0
+Inflammatory Linear Verrucous Epidermal Nevus,1,0
+Insect Bite Reaction,31,6
+Inverse psoriasis,1,0
+Itchy skin eruption,1,1
+Keloid,18,3
+Keloid Milium,5,0
+Keratoacanthoma,1,0
+Keratoderma,7,3
+Keratoderma with Secondary Infection,0,1
+Keratolysis Exfoliativa,3,0
+Keratosis pilaris,6,3
+Kerion,0,1
+Kumkum Dermatitis,4,0
+Kyrle���������s Disease,1,0
+Lichen Planus,55,2
+Lichen Planus pigmentosus,12,9
+Lichen Simplex Chronicus,23,6
+Lichen nitidus,12,2
+Lichen planopilaris,3,2
+Lichen sclerosus,6,0
+Lichen simplex,1,0
+Lichen spinulosus,1,1
+Lichen striatus,3,0
+Lichenoid eruption,4,0
+Linear Lichen Planus,1,1
+Lipoma,2,3
+Lupus vulgaris,3,1
+Maduromycosis,3,0
+Melanoma,2,0
+Melasma,64,16
+Milia,8,3
+Miliaria,1,0
+Molluscum Contagiosum,12,2
+Mongolian spot,1,0
+Morphea,1,0
+Mucosal Ulcer or Cyst,2,1
+Mucus Cyst,1,0
+Mycetoma,4,3
+Mycosis fungoides,3,1
+Myxoid Cyst,1,0
+Nail dystrophy,2,0
+Necrotizing Fasciitis,2,0
+Neurofibroma,1,1
+Nevocytic nevus,10,7
+Nevus Depigmentosis,2,0
+Nevus anemicus,2,0
+Nevus sebaceous,0,1
+No Definite Diagnosis,31,6
+Nodular Scabies,29,5
+Nodular vasculitis,0,1
+Nutritional Dermatitis,1,0
+Ochronosis,1,0
+Onychomycosis,35,9
+Ophiasis,2,0
+Oral Candidiasis,5,0
+Paederus dermatitis,7,0
+Palmar psoriasis,3,0
+Palmoplantar Keratoderma,37,4
+Paronychia,3,0
+Pellagra dermatitis,7,0
+Pemphigus foliaceus,1,0
+Pemphigus vulgaris,35,4
+Perioral dermatitis,1,0
+Phimosis,4,0
+Photodermatitis,44,11
+Phrynoderma,1,4
+Phytophotodermatitis,10,4
+Pigmented purpuric eruption,1,0
+Pityriasis Alba,23,4
+Pityriasis lichenoides chronica,8,0
+Pityriasis rosea,9,0
+Polymorphous Light Eruption,25,8
+Port wine stain,8,0
+Post-Inflammatory hyperpigmentation,44,10
+Post-Inflammatory hypopigmentation,9,1
+Prurigo,5,0
+Prurigo Simplex,13,1
+Prurigo nodularis,18,16
+Pruritic Urticarial Papules,33,15
+Pruritic dermatitis,6,1
+Pseudo lymphoma,0,1
+Pseudoepitheliomatous keratotic & micaceous balanitis,1,0
+Pseudofolliculitis barbae,1,0
+Pseudolymphoma,1,0
+Pseudomonas,2,0
+Psoriasis,126,33
+Psoriasis Vulgaris,8,0
+Purpuric Dermatoses,1,0
+Pustular Scabies,8,2
+Pustular psoriasis,1,0
+Pyoderma,37,8
+Pyoderma gangrenosum,1,1
+Reticulate acropigmentation of Dohi,1,2
+Rosacea,3,0
+SLE - Systemic lupus erythematosus-related syndrome,0,1
+Scabies,142,41
+Scabies Infected,26,6
+Scar Condition,12,1
+Scleroderma,7,0
+Scrotal Dermatitis,42,12
+Sebaceous Cyst,8,4
+Seborrheic Dermatitis,47,13
+Seborrheic Keratosis,4,3
+Seborrheic Melanosis,3,0
+Skin ulcer,2,1
+Squamous Cell Carcinoma,3,2
+Staphylococcal Scalded Skin Syndrome,2,0
+Steatocystoma Multiplex,1,0
+Steroid Induced Facies,8,0
+Steroid Modified Tinea,100,14
+Striae,5,2
+Sun damaged skin,4,0
+Sunburn,4,0
+Sweat Dermatitis,10,0
+Syphilis,3,0
+Syringoma,1,0
+Textile Dermatitis,13,2
+Tick bite,1,0
+Tinea,18,4
+Tinea Capitis,27,5
+Tinea Corporis,271,52
+Tinea Cruris,435,110
+Tinea Faciei,112,25
+Tinea Infected with secondary bacterial Infection,3,0
+Tinea Manuum,13,4
+Tinea Versicolor,65,13
+Tinea pedis,8,8
+Topical Steroid Damaged Face,56,8
+Traction alopecia,15,2
+Trichoepithelioma,5,0
+Trophic Ulcer,1,0
+Truncal Acne,24,11
+Ulcer,4,0
+Urticaria,43,9
+Urticarial vasculitis,4,0
+Varicella Zoster,5,0
+Varicose vein,3,0
+Vasculitis,12,0
+Verruca Vulgaris,11,1
+Viral exanthem,5,1
+Vitiligo,490,111
+Wart,21,6
+White piedra,0,1
+Xanthelasma Palpebrarum,1,0
+Xanthoma,1,0
+Xerosis,46,2
+Xerosis vulgaris,7,0
+Zoon's Balanitis,2,0

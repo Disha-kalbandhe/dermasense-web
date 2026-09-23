@@ -74,6 +74,7 @@ yarn-error.log*
 ml/checkpoints/*.pth
 ml/checkpoints/*.pt
 *.pth
+ml/data/raw/*.zip
 *.pt
 ml/data/raw/DATASET/
 ml/data/*.zip

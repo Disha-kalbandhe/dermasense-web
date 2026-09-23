@@ -1,4 +1,6 @@
 import os
+import sys
+from pathlib import Path
 from collections import Counter
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
@@ -25,13 +27,17 @@ import numpy as np
 from torchvision import transforms
 from timm import create_model
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
+from dataset_discovery import discover_dataset, resolve_image
+
 
 # ─── Config & Paths ────────────────────────────────────────────────────────────
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-train_csv = "./METADATA/train_split.csv"
-val_csv = "./METADATA/test_split.csv"
-image_folder = "./DATASET"
+dataset_paths = discover_dataset(Path(__file__).resolve().parents[2] / "data" / "raw")
+train_csv = str(dataset_paths.train_csv)
+val_csv = str(dataset_paths.test_csv)
+image_folders = dataset_paths.image_dirs
 
 
 # ─── Label Mapping & Sampler ──────────────────────────────────────────────────
@@ -68,9 +74,9 @@ def pad_collate_fn(batch):
 
 
 class ImageDataset(Dataset):
-    def __init__(self, csv_file, image_folder, transform=None):
+    def __init__(self, csv_file, image_folders, transform=None):
         self.df = pd.read_csv(csv_file)
-        self.folder = image_folder
+        self.folders = image_folders
         self.transform = transform
 
     def __len__(self):
@@ -78,7 +84,9 @@ class ImageDataset(Dataset):
 
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
-        img_path = os.path.join(self.folder, row['Image_name'])
+        img_path = resolve_image(str(row['Image_name']), self.folders)
+        if img_path is None:
+            raise FileNotFoundError(f"Image not found: {row['Image_name']}")
         label_idx = label_to_idx[row['Main_class']]
 
         img = Image.open(img_path).convert('RGB')
@@ -86,8 +94,8 @@ class ImageDataset(Dataset):
             img = self.transform(img)
         return img, label_idx
 
-train_ds = ImageDataset(train_csv, image_folder, transform=train_transform)
-val_ds = ImageDataset(val_csv, image_folder, transform=val_transform)
+train_ds = ImageDataset(train_csv, image_folders, transform=train_transform)
+val_ds = ImageDataset(val_csv, image_folders, transform=val_transform)
 
 train_loader = DataLoader(train_ds, batch_size=84, sampler=sampler, num_workers=4, collate_fn=pad_collate_fn)
 val_loader = DataLoader(val_ds, batch_size=84, shuffle=False, num_workers=4, collate_fn=pad_collate_fn)

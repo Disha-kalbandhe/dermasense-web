@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import json
 
-from app.inference import run_inference  # ← SAHI
+from app.inference import checkpoint_status, run_inference
 
 app = FastAPI(title="DermaSense API", version="1.0.0")
 
@@ -20,18 +20,30 @@ app.add_middleware(
 class PredictResponse(BaseModel):
     primary_condition: str
     primary_confidence: float
+    disease_family: str
+    disease_subgroup: str
+    hierarchy_path: list[str]
+    hierarchy_confidence: dict[str, float]
     differentials: list[dict]
+    hierarchical_consistency: bool | None
+    explainability: dict
+    model_version: str
+    disclaimer: str
 
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "model": checkpoint_status()}
 
 
 @app.post("/predict", response_model=PredictResponse)
 async def predict(
     image: UploadFile = File(...),
+    age: int | None = Form(None),
+    gender: str | None = Form(None),
+    skin_tone: str | None = Form(None),
     body_location: str = Form(...),
+    duration: str | None = Form(None),
     symptoms: str = Form(...),          # JSON string: '["Itching","Scaling"]'
 ):
     # Validate image
@@ -60,7 +72,11 @@ async def predict(
     try:
         result = run_inference(
             pil_image=pil_img,
+            age=age,
+            gender=gender,
+            skin_tone=skin_tone,
             body_location=body_location,
+            duration=duration,
             symptoms=symptoms_list,
             top_k=3,
         )

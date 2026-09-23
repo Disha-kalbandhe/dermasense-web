@@ -39,7 +39,7 @@ const faqs = [
       },
       {
         q: "What does the confidence score mean?",
-        a: "The confidence score represents the model's certainty in its primary prediction, expressed as a percentage. A score of 94.2% means the model assigns 94.2% probability to that diagnosis. The remaining probability is distributed across alternative diagnoses shown in the differentials list.",
+        a: "The confidence score represents the model's probability for its primary prediction. The remaining probability is distributed across alternative diagnoses shown in the differentials list. It is not a medical certainty.",
       },
       {
         q: "What is Cross-Attention Fusion?",
@@ -79,10 +79,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      className="border-b"
-      style={{ borderColor: "var(--color-border)" }}
-    >
+    <div className="border-b" style={{ borderColor: "var(--color-border)" }}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-4 py-5 text-left"
@@ -130,7 +127,6 @@ export default function FAQPage() {
       style={{ backgroundColor: "var(--color-bg)" }}
     >
       <div className="mx-auto" style={{ maxWidth: "var(--content-narrow)" }}>
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -158,8 +154,8 @@ export default function FAQPage() {
             className="mt-4 text-base"
             style={{ color: "var(--color-text-muted)", maxWidth: "48ch" }}
           >
-            Everything you need to know about DermaSense — how it works,
-            what it can and cannot do, and how your data is handled.
+            Everything you need to know about DermaSense — how it works, what it
+            can and cannot do, and how your data is handled.
           </p>
         </motion.div>
 
@@ -217,10 +213,7 @@ export default function FAQPage() {
             >
               Ready to try it?
             </p>
-            <p
-              className="text-sm"
-              style={{ color: "var(--color-text-muted)" }}
-            >
+            <p className="text-sm" style={{ color: "var(--color-text-muted)" }}>
               Upload a skin image and get an AI-powered analysis in seconds.
             </p>
           </div>
@@ -235,7 +228,6 @@ export default function FAQPage() {
             Analyze Skin →
           </Link>
         </motion.div>
-
       </div>
     </main>
   );

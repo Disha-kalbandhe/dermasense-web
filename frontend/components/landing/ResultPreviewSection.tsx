@@ -1,32 +1,56 @@
 "use client";
 import { useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "motion/react";
+import {
+  motion,
+  useInView,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "motion/react";
 
 const differentials = [
-  { condition: "Seborrheic Keratosis", confidence: 94.2 },
-  { condition: "Melanocytic Nevus", confidence: 3.1 },
-  { condition: "Dermatofibroma", confidence: 1.8 },
+  { condition: "Example condition", confidence: 42 },
+  { condition: "Illustrative alternative", confidence: 24 },
+  { condition: "Illustrative possibility", confidence: 12 },
 ];
 
-function ConfidenceBar({ confidence, index }: { confidence: number; index: number }) {
+function ConfidenceBar({
+  confidence,
+  index,
+}: {
+  confidence: number;
+  index: number;
+}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
   return (
     <div ref={ref} className="flex items-center gap-3">
-      <div className="flex-1 h-1.5 rounded-full overflow-hidden"
-        style={{ backgroundColor: "var(--color-surface-offset)" }}>
+      <div
+        className="flex-1 h-1.5 rounded-full overflow-hidden"
+        style={{ backgroundColor: "var(--color-surface-offset)" }}
+      >
         <motion.div
           className="h-full rounded-full"
-          style={{ backgroundColor: index === 0 ? "var(--color-primary)" : "var(--color-text-faint)" }}
+          style={{
+            backgroundColor:
+              index === 0 ? "var(--color-primary)" : "var(--color-text-faint)",
+          }}
           initial={{ width: 0 }}
           animate={inView ? { width: `${confidence}%` } : {}}
-          transition={{ duration: 0.8, delay: index * 0.1 + 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{
+            duration: 0.8,
+            delay: index * 0.1 + 0.3,
+            ease: [0.16, 1, 0.3, 1],
+          }}
         />
       </div>
       <span
         className="text-xs shrink-0 w-10 text-right"
-        style={{ fontFamily: "var(--font-mono)", color: "var(--color-text-muted)" }}
+        style={{
+          fontFamily: "var(--font-mono)",
+          color: "var(--color-text-muted)",
+        }}
       >
         {confidence}%
       </span>
@@ -42,8 +66,14 @@ export default function ResultPreviewSection() {
   // Mouse parallax tilt — desktop only
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 30 });
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 30 });
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), {
+    stiffness: 200,
+    damping: 30,
+  });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), {
+    stiffness: 200,
+    damping: 30,
+  });
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -92,9 +122,9 @@ export default function ResultPreviewSection() {
             className="text-base mb-8 leading-relaxed"
             style={{ color: "var(--color-text-muted)", maxWidth: "48ch" }}
           >
-            The Grad-CAM++ heatmap highlights exactly which region of the
-            skin influenced the prediction — so patients and clinicians
-            understand the reasoning, not just the result.
+            The Grad-CAM++ heatmap highlights exactly which region of the skin
+            influenced the prediction — so patients and clinicians understand
+            the reasoning, not just the result.
           </p>
           <a
             href="/analyze"
@@ -150,8 +180,14 @@ export default function ResultPreviewSection() {
                       onClick={() => setActiveTab(tab)}
                       className="px-3 py-1.5 capitalize transition-colors"
                       style={{
-                        color: activeTab === tab ? "#ffffff" : "rgba(255,255,255,0.55)",
-                        backgroundColor: activeTab === tab ? "var(--color-primary)" : "transparent",
+                        color:
+                          activeTab === tab
+                            ? "#ffffff"
+                            : "rgba(255,255,255,0.55)",
+                        backgroundColor:
+                          activeTab === tab
+                            ? "var(--color-primary)"
+                            : "transparent",
                       }}
                     >
                       {tab === "heatmap" ? "Heatmap" : "Original"}
@@ -159,7 +195,7 @@ export default function ResultPreviewSection() {
                   ))}
                 </div>
 
-                {/* Image placeholder */}
+                {/* Illustrative preview; live explanations appear on the analysis result page. */}
                 <div
                   className="w-full h-52 flex items-center justify-center relative overflow-hidden"
                   style={{
@@ -170,7 +206,6 @@ export default function ResultPreviewSection() {
                   }}
                 >
                   {activeTab === "heatmap" ? (
-                    // Heatmap visual — CSS gradient simulation
                     <div className="absolute inset-0">
                       <div
                         className="absolute inset-0"
@@ -182,16 +217,21 @@ export default function ResultPreviewSection() {
                       />
                       <div
                         className="absolute inset-0 flex items-center justify-center"
-                        style={{ color: "rgba(255,255,255,0.3)", fontSize: "11px", fontFamily: "var(--font-mono)" }}
+                        style={{
+                          color: "rgba(255,255,255,0.3)",
+                          fontSize: "11px",
+                          fontFamily: "var(--font-mono)",
+                        }}
                       >
-                        GRAD-CAM++ OVERLAY
+                        ILLUSTRATIVE PREVIEW · NOT MODEL OUTPUT
                       </div>
                     </div>
                   ) : (
                     <div
                       className="w-32 h-32 rounded-full"
                       style={{
-                        backgroundColor: "var(--color-surface-dynamic, #e0ddd7)",
+                        backgroundColor:
+                          "var(--color-surface-dynamic, #e0ddd7)",
                         border: "1px solid var(--color-border)",
                       }}
                     />
@@ -214,19 +254,9 @@ export default function ResultPreviewSection() {
                       className="text-base font-semibold"
                       style={{ color: "var(--color-text)" }}
                     >
-                      Seborrheic Keratosis
+                      Example condition
                     </p>
                   </div>
-                  {/* Severity badge */}
-                  <span
-                    className="text-xs font-medium px-2.5 py-1 rounded-full"
-                    style={{
-                      backgroundColor: "var(--color-primary-light)",
-                      color: "var(--color-primary)",
-                    }}
-                  >
-                    MILD
-                  </span>
                 </div>
 
                 {/* Confidence */}
@@ -245,7 +275,7 @@ export default function ResultPreviewSection() {
                         color: "var(--color-primary)",
                       }}
                     >
-                      94.2%
+                      Example only
                     </span>
                   </div>
                   <div
@@ -256,8 +286,12 @@ export default function ResultPreviewSection() {
                       className="h-full rounded-full"
                       style={{ backgroundColor: "var(--color-primary)" }}
                       initial={{ width: 0 }}
-                      animate={inView ? { width: "94.2%" } : {}}
-                      transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      animate={inView ? { width: "42%" } : {}}
+                      transition={{
+                        duration: 1,
+                        delay: 0.5,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     />
                   </div>
                 </div>
@@ -276,7 +310,12 @@ export default function ResultPreviewSection() {
                         <div className="flex justify-between items-center mb-1">
                           <span
                             className="text-xs"
-                            style={{ color: i === 0 ? "var(--color-text)" : "var(--color-text-muted)" }}
+                            style={{
+                              color:
+                                i === 0
+                                  ? "var(--color-text)"
+                                  : "var(--color-text-muted)",
+                            }}
                           >
                             {d.condition}
                           </span>
@@ -300,7 +339,7 @@ export default function ResultPreviewSection() {
                     className="text-xs"
                     style={{ color: "var(--color-text-muted)" }}
                   >
-                    Routine follow-up · No urgent referral needed
+                    No clinical recommendation is generated by this preview.
                   </p>
                 </div>
 
@@ -312,7 +351,8 @@ export default function ResultPreviewSection() {
                     color: "var(--color-saffron)",
                   }}
                 >
-                  ⚠ AI screening aid only. Consult a qualified dermatologist before any action.
+                  ⚠ AI screening aid only. Consult a qualified dermatologist
+                  before any action.
                 </div>
               </div>
             </div>

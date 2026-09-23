@@ -1,54 +1,1173 @@
-[
-  "Contact purpura",
-  "Phrynoderma",
-  "Neurofibroma",
-  "Infected Nodule",
-  "Miliaria",
-  "Xanthelasma Palpebrarum",
-  "Tick bite",
-  "Cutaneous larva migrans",
-  "Gutted Lichen Planus",
-  "Pyoderma gangrenosum",
-  "Reticulate acropigmentation of Dohi",
-  "Morphea",
-  "Cutaneous Anthrax",
-  "Ecchymosis",
-  "Nutritional Dermatitis",
-  "Becker nevus",
-  "Xanthoma",
-  "Eczemated Tinea",
-  "Mongolian spot",
-  "Kyrle\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffds Disease",
-  "Pemphigus foliaceus",
-  "Inflammatory Linear Verrucous Epidermal Nevus",
-  "Cellulitis",
-  "Pustular psoriasis",
-  "Infection of toe web",
-  "Purpuric Dermatoses",
-  "Chronic eczema with secondary infection",
-  "Hyperpigmentation disorder",
-  "Pseudoepitheliomatous keratotic & micaceous balanitis",
-  "Pseudolymphoma",
-  "Steatocystoma Multiplex",
-  "Pseudofolliculitis barbae",
-  "Inverse psoriasis",
-  "Balanitis",
-  "Pigmented purpuric eruption",
-  "Mucus Cyst",
-  "Ochronosis",
-  "Lichen simplex",
-  "Bowen's Metastasis",
-  "Keratoacanthoma",
-  "Syringoma",
-  "Erythrasma",
-  "Perioral dermatitis",
-  "Angioedema",
-  "Lichen spinulosus",
-  "Herpes Labialis",
-  "Haemorrhoids",
-  "Acne Keloidalis",
-  "Itchy skin eruption",
-  "Myxoid Cyst",
-  "Trophic Ulcer",
-  "Linear Lichen Planus"
-]
+{
+  "Acne Keloidalis": {
+    "train_count": 1,
+    "test_count": 2,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Anetoderma": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Angioedema": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Balanitis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Becker nevus": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Bowen's Metastasis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Bullous Fixed Drug Eruption": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Bullous Pemphigoid": {
+    "train_count": 2,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Cellulitis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Chromoblastomycosis": {
+    "train_count": 8,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Chronic Bullous Disease of Childhood": {
+    "train_count": 8,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Chronic eczema with secondary infection": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Congenital Disease": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Contact Dermatitis with secondary infection": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Contact purpura": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Corn": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Crusted eczematous dermatitis": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Cutaneous Anthrax": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Cutaneous amyloidosis": {
+    "train_count": 2,
+    "test_count": 4,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Cutaneous larva migrans": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Cutaneous sarcoidosis": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Cyst": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Darier's disease": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Demodicosis": {
+    "train_count": 0,
+    "test_count": 3,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Dermatofibroma": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Dermatosis Papulosa Nigra": {
+    "train_count": 17,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Diabetic Ulcer": {
+    "train_count": 9,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Discoid Lupus Erythematosus": {
+    "train_count": 12,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Drug Rash": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Drug eruption": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Dry Discoid Eczema": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Dryness (xerosis)": {
+    "train_count": 7,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Ecchymosis": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Ecthyma": {
+    "train_count": 2,
+    "test_count": 2,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Eczemated Tinea": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Epidermodysplasia Verruciformis": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Epidermolysis Bullosa": {
+    "train_count": 7,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Erythema Annulare Centrifugum": {
+    "train_count": 2,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Erythema multiforme": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Erythrasma": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Facial hypermelanosis": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Foot ulcer": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "GeographicTongue": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Granuloma annulare": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Gutted Lichen Planus": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Haemorrhoids": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Herpes Labialis": {
+    "train_count": 1,
+    "test_count": 2,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Hyper Hydrosis": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Hyperpigmentation disorder": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Hypertrophic Scar / Keloid": {
+    "train_count": 12,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Infected Keratoderma": {
+    "train_count": 6,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Infected Nodule": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Infection of toe web": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Inflammatory Linear Verrucous Epidermal Nevus": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Inverse psoriasis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Itchy skin eruption": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Keloid Milium": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Keratoacanthoma": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Keratoderma with Secondary Infection": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Keratolysis Exfoliativa": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Kerion": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Kumkum Dermatitis": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Kyrle\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffd\ufffds Disease": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Lichen sclerosus": {
+    "train_count": 6,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Lichen simplex": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Lichen spinulosus": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Lichen striatus": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Lichenoid eruption": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Linear Lichen Planus": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Lipoma": {
+    "train_count": 2,
+    "test_count": 3,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Maduromycosis": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Melanoma": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Miliaria": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Mongolian spot": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Morphea": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Mucosal Ulcer or Cyst": {
+    "train_count": 2,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Mucus Cyst": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Myxoid Cyst": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Nail dystrophy": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Necrotizing Fasciitis": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Neurofibroma": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Nevus Depigmentosis": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Nevus anemicus": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Nevus sebaceous": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Nodular vasculitis": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Nutritional Dermatitis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Ochronosis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Ophiasis": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Oral Candidiasis": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Paederus dermatitis": {
+    "train_count": 7,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Palmar psoriasis": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Paronychia": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Pellagra dermatitis": {
+    "train_count": 7,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Pemphigus foliaceus": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Perioral dermatitis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Phimosis": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Phrynoderma": {
+    "train_count": 1,
+    "test_count": 4,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Pigmented purpuric eruption": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Pityriasis lichenoides chronica": {
+    "train_count": 8,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Pityriasis rosea": {
+    "train_count": 9,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Port wine stain": {
+    "train_count": 8,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Prurigo": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Pseudo lymphoma": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Pseudoepitheliomatous keratotic & micaceous balanitis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Pseudofolliculitis barbae": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Pseudolymphoma": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Pseudomonas": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Psoriasis Vulgaris": {
+    "train_count": 8,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Purpuric Dermatoses": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Pustular psoriasis": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Pyoderma gangrenosum": {
+    "train_count": 1,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Reticulate acropigmentation of Dohi": {
+    "train_count": 1,
+    "test_count": 2,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": true
+  },
+  "Rosacea": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "SLE - Systemic lupus erythematosus-related syndrome": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Scleroderma": {
+    "train_count": 7,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Seborrheic Melanosis": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Skin ulcer": {
+    "train_count": 2,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Staphylococcal Scalded Skin Syndrome": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Steatocystoma Multiplex": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Steroid Induced Facies": {
+    "train_count": 8,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Sun damaged skin": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Sunburn": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Sweat Dermatitis": {
+    "train_count": 10,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Syphilis": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Syringoma": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Tick bite": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Tinea Infected with secondary bacterial Infection": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Trichoepithelioma": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Trophic Ulcer": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Ulcer": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Urticarial vasculitis": {
+    "train_count": 4,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Varicella Zoster": {
+    "train_count": 5,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Varicose vein": {
+    "train_count": 3,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Vasculitis": {
+    "train_count": 12,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "White piedra": {
+    "train_count": 0,
+    "test_count": 1,
+    "reasons": [
+      "insufficient_train_samples"
+    ],
+    "previously_known_rare": false
+  },
+  "Xanthelasma Palpebrarum": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Xanthoma": {
+    "train_count": 1,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": true
+  },
+  "Xerosis vulgaris": {
+    "train_count": 7,
+    "test_count": 0,
+    "reasons": [
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  },
+  "Zoon's Balanitis": {
+    "train_count": 2,
+    "test_count": 0,
+    "reasons": [
+      "insufficient_train_samples",
+      "missing_from_test"
+    ],
+    "previously_known_rare": false
+  }
+}
